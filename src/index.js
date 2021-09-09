@@ -3,11 +3,8 @@ import "./styles.css";
 function addNewItemToList() {
   var ul = document.getElementById("list");
   var value = document.getElementById("text").value;
-  if (value) {
-    getValueAndAdd(ul);
-  } else {
-    addElementsToList(ul, value);
-  }
+  addElementsToList(ul, value);
+  getValueAndAdd(ul, value);
 }
 
 function getValueAndAdd(ul, value) {
