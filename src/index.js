@@ -1,19 +1,44 @@
-import './styles.css';
+import "./styles.css";
 
 function addNewItemToList() {
-	var ul = document.getElementById('list');
-	var li = document.createElement('li');
-	var value = document.getElementById('text').value;
-	li.appendChild(document.createTextNode(value));
-	ul.appendChild(li);
+  var ul = document.getElementById("list");
+  var value = document.getElementById("text").value;
+  if (value) {
+    getValueAndAdd(ul);
+  } else {
+    addElementsToList(ul, value);
+  }
+}
+
+function getValueAndAdd(ul, value) {
+  var li = document.createElement("li");
+  li.appendChild(document.createTextNode(value));
+  ul.appendChild(li);
 }
 
 function removeAllFromList() {
-	var res = window.confirm('Do you want to remove all items from List?');
-	if (res) {
-		document.getElementById('list').innerHTML = '';
-	}
+  var res = window.confirm("Do you want to remove all items from List?");
+  if (res) {
+    document.getElementById("list").innerHTML = "";
+  }
 }
 
-document.getElementById('add-comment').onclick = addNewItemToList;
-document.getElementById('remove-comments').onclick = removeAllFromList;
+function addElementsToList(ul) {
+  var productList = [
+    "Electronics Watch",
+    "House wear Items",
+    "Kids wear",
+    "Women Fashion",
+    "Women Fashion"
+  ];
+  productList.forEach(renderProductList);
+
+  function renderProductList(element, index, arr) {
+    var li = document.createElement("li");
+    ul.appendChild(li);
+    li.innerHTML = li.innerHTML + element;
+  }
+}
+
+document.getElementById("add-comment").onclick = addNewItemToList;
+document.getElementById("remove-comments").onclick = removeAllFromList;
